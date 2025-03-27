@@ -694,7 +694,9 @@ ggplot(data = combined_quarterly_median) +
     fill = "#CD9600",
     width = 0.5
     ) +
-  labs(title = "Median Trip Duration, Q3 2024",
+  theme(plot.subtitle = element_text(face = "italic")) +
+  labs(title = "Median Trip Duration",
+       subtitle = "Q3 2024",
        caption = "Data from Capital Bikeshare and Ride Report for DC (public.ridereport.com)",
        x="Rideable Type",
        y = "Median Trip Duration (minutes)") +
@@ -705,3 +707,4 @@ ggplot(data = combined_quarterly_median) +
     labels = c("Micromobility Scooter", "Micromobility E-Bike", "Capital Bikeshare E-Bike", "Capital Bikeshare Classic Bike")
   )
 ```
+END
