@@ -18,8 +18,8 @@ Bikeshare](https://capitalbikeshare.com/system-data) for its system and
 [Ride Report](https://public.ridereport.com/regions/washington) for
 micromobility providers.
 
-The slide deck in this repository presents my findings and
-recommendations. This readme and the R Markdown file walk through the
+The [slide deck](cabi-competition_case-study-deck_jgarties.pdf) in this repository presents my findings and
+recommendations. This readme and the [R Markdown file](cabi_competition_2025-03-26.Rmd) walk through the
 steps I took to perform my analysis.
 
 ## Background
