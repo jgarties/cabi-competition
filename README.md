@@ -29,20 +29,23 @@ Washington, DC region. It is owned by the local governments in its
 service area, who contract its operations out to a private company.
 Riders typically unlock and return bikes at docking stations installed
 throughout the region, although riders may end e-bike rides without
-returning them to a dock for an additional fee. *Key dates:* \* 2010:
-Capital Bikeshare opens. \* 2018: Capital Bikeshare begins introducing
-e-bikes. \* 2023: Capital Bikeshare introduces new e-bikes with greater
-performance and reliability.
+returning them to a dock for an additional fee. 
+
+*Key dates:*
+* 2010: Capital Bikeshare opens.
+* 2018: Capital Bikeshare begins introducing e-bikes.
+* 2023: Capital Bikeshare introduces new e-bikes with greater performance and reliability.
 
 Privately-owned **micromobility** companies operate dockless e-bike and
 scooter service in DC, Arlington, and the University of Maryland. Riders
 can start and end dockless rideables anywhere, with some limitations on
 where they can park. For simplicity, I use the term “micromobility” in
-this case study to refer to these companies’ services. *Key dates:* \*
-2017: DC begins permitting micromobility services. \* 2020: DC raises
-its cap on micromobility rideables to 5,000 e-bikes and 10,000 scooters.
-\* 2023: DC raises its cap on micromobility rideables to 10,000 e-bikes
-and 20,000 scooters.
+this case study to refer to these companies’ services. 
+
+*Key dates:* 
+* 2017: DC begins permitting micromobility services.
+* 2020: DC raises its cap on micromobility rideables to 5,000 e-bikes and 10,000 scooters.
+* 2023: DC raises its cap on micromobility rideables to 10,000 e-bikes and 20,000 scooters.
 
 ## Load Data
 
@@ -459,12 +462,6 @@ ggplot(data = cabi_quarterly_rideable) +
     )
 ```
 
-![](cabi_readme_mar25_files/figure-gfm/cabi%20stacked%20area%20chart-1.png)<!-- -->
-
-``` r
-ggsave(filename = "cabi_rides_by_rideable_quarterly.png", width = 7, height = 4)
-```
-
 To more clearly show that e-bikes account for a larger proportion of
 ridership over time, we can plot a stacked bar chart. Each bar
 represents 100% of the ridership for the year, which shows the change in
@@ -493,12 +490,6 @@ ggplot(data = cabi_yearly_rideable) +
        x = NULL,
        y = NULL
   )
-```
-
-![](cabi_readme_mar25_files/figure-gfm/cabi%20stacked%20bar-1.png)<!-- -->
-
-``` r
-ggsave(filename = "cabi_rides_annual_ebike.png", width = 7, height = 3)
 ```
 
 ### Micromobility
@@ -533,12 +524,6 @@ ggplot(data = mm_quarterly_rideable) +
        y = "Rides")
 ```
 
-![](cabi_readme_mar25_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
-
-``` r
-ggsave(filename = "mm_by_rideable_total.png", width = 7, height = 4)
-```
-
 Plot a 100% stacked bar chart similar to Capital Bikeshare chart,
 breaking down ridership by e-bikes and scooters.
 
@@ -564,12 +549,6 @@ ggplot(data = mm_yearly_rideable) +
        x = NULL,
        y = NULL
   )
-```
-
-![](cabi_readme_mar25_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
-
-``` r
-ggsave(filename = "mm_annual_type.png", width = 7, height = 3)
 ```
 
 ### Combined
@@ -610,12 +589,6 @@ ggplot() +
        caption = "Data from Capital Bikeshare and Ride Report for DC, Arlington, and University of Maryland (public.ridereport.com)",
        x=NULL,
        y = "Rides")
-```
-
-![](cabi_readme_mar25_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
-
-``` r
-ggsave(filename = "ridership_comparison.png", width = 7, height = 3)
 ```
 
 Next, plot a similar chart showing only e-bike ridership for both
@@ -676,12 +649,6 @@ ggplot() +
   )
 ```
 
-![](cabi_readme_mar25_files/figure-gfm/compare%20e-bike%20ridership-1.png)<!-- -->
-
-``` r
-ggsave(filename = "ridership_comparison_ebike.png", width = 7, height = 3)
-```
-
 Plot median trip duration across all Capital Bikeshare and micromobility
 rideables to assess whether riders select their service and rideable
 depending on the trip they are taking. We use Q3 2024 data because
@@ -705,8 +672,6 @@ cabi_quarterly_median <- cabi_data %>%
   mutate(operator = "cabi") %>% 
   mutate(rideable_type = if_else(rideable_type == "electric_bike", "cabi_ebike", rideable_type))  
 
-View(cabi_quarterly_median)
-
 # Create dataframe for micromobility median trip duration
 mm_quarterly_median <- mm_data %>% 
   group_by(quarter_start, rideable_type) %>% 
@@ -716,12 +681,8 @@ mm_quarterly_median <- mm_data %>%
   mutate(rideable_type = if_else(rideable_type == "electric_bike", "mm_ebike", rideable_type)) %>% 
   select(quarter_start, operator, rideable_type, median_duration)
 
-View(mm_quarterly_median)
-
 # Join the two dataframes
 combined_quarterly_median <- bind_rows(cabi_quarterly_median, mm_quarterly_median)
-
-View(combined_quarterly_median)
 
 # Create bar chart
 ggplot(data = combined_quarterly_median) +
@@ -743,10 +704,4 @@ ggplot(data = combined_quarterly_median) +
   scale_x_discrete(
     labels = c("Micromobility Scooter", "Micromobility E-Bike", "Capital Bikeshare E-Bike", "Capital Bikeshare Classic Bike")
   )
-```
-
-![](cabi_readme_mar25_files/figure-gfm/median%20ride%20time-1.png)<!-- -->
-
-``` r
-ggsave(filename = "median_duration.png", width = 7, height = 3)
 ```
