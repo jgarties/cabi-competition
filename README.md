@@ -328,7 +328,7 @@ The micromobility data is already summarized at a high level. Manually
 reviewing it does not reveal any obvious issues, so we will accept Ride
 Report’s cleaning of the underlying data as sufficient.
 
-First, save the manually prepared Excel file as a dataframen using
+First, save the manually prepared Excel file as a dataframe using
 .name_repair to address spaces in the column headers.
 
 ``` r
