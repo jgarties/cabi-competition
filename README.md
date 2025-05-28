@@ -19,7 +19,7 @@ Bikeshare](https://capitalbikeshare.com/system-data) for its system and
 micromobility providers.
 
 The [slide deck](cabi-competition_case-study-deck_jgarties.pdf) in this repository presents my findings and
-recommendations. This readme and the [R Markdown file](cabi_competition_2025-03-26.Rmd) walk through the
+recommendations. This README and the [R Markdown file](cabi_competition_2025-03-26.Rmd) walk through the
 steps I took to perform my analysis.
 
 ## Background
@@ -28,7 +28,7 @@ steps I took to perform my analysis.
 Washington, DC region. It is owned by the local governments in its
 service area, who contract its operations out to a private company.
 Riders typically unlock and return bikes at docking stations installed
-throughout the region, although riders may end e-bike rides without
+throughout the region, although they may end e-bike rides without
 returning them to a dock for an additional fee. 
 
 *Key dates:*
@@ -118,7 +118,7 @@ head(cabi_data_raw)
 
 Download CSV files from [Ride Report’s DC Region
 page](https://public.ridereport.com/regions/washington). Save a separate
-CSV for each of the three regions and for each rideable type (e-bikes
+CSV for each of the three regions and each rideable type (e-bikes
 and scooters) for a total of six CSVs. Save them in another directory.
 
 Since these files have relatively few rows, I chose to combine them in
@@ -143,7 +143,7 @@ colSums(is.na(cabi_data_raw))
 Seeing none, we will create new columns to help us manipulate the data.
 
 The new date columns will help us summarize by year, quarter, and month.
-We need quarter because the micromobility dataset is summarized by
+We need the quarter because the micromobility dataset is summarized by
 quarter.
 
 The ‘duration_mins’ column uses the ‘started_at’ and ‘ended_at’
@@ -494,7 +494,7 @@ ggplot(data = cabi_yearly_rideable) +
 
 ### Micromobility
 
-Plot a stacked are chart similar to the chart for Capital Bikeshare,
+Plot a stacked area chart similar to the chart for Capital Bikeshare,
 breaking down ridership by e-bikes and scooters.
 
 *Takeaway:* Ridership has grown steadily over the past four years. Most
@@ -527,7 +527,7 @@ ggplot(data = mm_quarterly_rideable) +
 Plot a 100% stacked bar chart similar to Capital Bikeshare chart,
 breaking down ridership by e-bikes and scooters.
 
-*Takeaway:* Scooters dominate ridershp, but the proportion of e-bikes is
+*Takeaway:* Scooters dominate ridership, but the proportion of e-bikes is
 growing.
 
 ``` r
@@ -653,7 +653,7 @@ Plot median trip duration across all Capital Bikeshare and micromobility
 rideables to assess whether riders select their service and rideable
 depending on the trip they are taking. We use Q3 2024 data because
 ridership peaks in Q3 every year, and 2024 is the most recent year
-avaialable.
+available.
 
 This requires creating two new dataframes for the two services showing
 their median trip duration in each quarter by rideable type, then
